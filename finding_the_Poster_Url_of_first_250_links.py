@@ -9,37 +9,6 @@ def all_poster_Url_finder(url):
     finder.get(url)
 
     #here i am finding the image tag of the top 250 movies
-    try:
-        div_of_poster = finder.find_element(By.XPATH,"/html/body/div[2]/main/div/section[1]/section/div[3]/section/section/div[3]/div[1]/div[1]/div/div[1]")
-        # all_data_new = (all_data.text).split("\n")
-        imag_tag = div_of_poster.find_element(By.TAG_NAME , "img").get_attribute("src")
-        # print(imag_tag)
-
-    except ValueError as e:
-        imag_tag = "None"
-        # print(imag_tag)
-    try:
-        box_location = finder.find_element(By.XPATH , "/html/body/div[2]/main/div/section[1]/div/section/div/div[1]/section[4]/div[2]/div[2]")
-        actual_name_ho = box_location.find_elements(By.TAG_NAME , "a")
-        names = list()
-
-        for name in actual_name_ho:
-            names.append(name.text)
-        count = 0
-        actual_names = list()
-        for index in range(len(names)):
-            if names[index] == "":
-                actual_names.append(names[index + 1])
-                count += 1
-            if count == 3:
-                break
-
-
-    except ValueError as e:
-        actual_names = "None"
-        # print(actual_names)
-
-
 
     try:
         all_data = finder.find_element(By.XPATH, "/html")
@@ -51,7 +20,7 @@ def all_poster_Url_finder(url):
             actual_director_name = all_data_new[index_of_director + 1]
             # name of director ends
         except ValueError as e:
-            actual_director_name = "NULL"
+            actual_director_name = None
 
         # here i am finding the gonear list
         try:
@@ -74,7 +43,7 @@ def all_poster_Url_finder(url):
             actual_movie_name = all_data_new[movie_name_index + 1]
             # finding the actual movie name ends here
         except ValueError as e:
-            actual_movie_name = "NULL"
+            actual_movie_name = None
 
         try:
             # here i am finding the reviews in millions
@@ -99,7 +68,7 @@ def all_poster_Url_finder(url):
             # here finding the actual description ends
         except ValueError as e:
 
-            actual_description = "NULL"
+            actual_description = None
 
         try:
             # here i am finding the actual run time
@@ -117,7 +86,7 @@ def all_poster_Url_finder(url):
             # finding the actual language ends here
         except ValueError as e:
 
-            acutal_language = "NULL"
+            acutal_language = None
 
         try:
             # here i am finding the actual country name
@@ -127,7 +96,7 @@ def all_poster_Url_finder(url):
             # here origian of country name is ending
         except ValueError as e:
 
-            actual_country = "NULL"
+            actual_country = None
 
         try:
             # here i am finding the budget for the movie
@@ -176,29 +145,64 @@ def all_poster_Url_finder(url):
 
         except ValueError as e:
 
-            href_ = "null"
+
+            href_ = None
+
+        try:
+            box_location = finder.find_element(By.XPATH,
+                                               "/html/body/div[2]/main/div/section[1]/div/section/div/div[1]/section[4]/div[2]/div[2]")
+            actual_name_ho = box_location.find_elements(By.TAG_NAME, "a")
+            names = list()
+
+            for name in actual_name_ho:
+                names.append(name.text)
+            count = 0
+            actual_names = list()
+            for index in range(len(names)):
+                if names[index] == "":
+                    actual_names.append(names[index + 1])
+                    count += 1
+                if count == 3:
+                    break
+
+
+        except ValueError as e:
+            actual_names = None
+
+        try:
+            div_of_poster = finder.find_element(By.XPATH,
+                                                            "/html/body/div[2]/main/div/section[1]/section/div[3]/section/section/div[3]/div[1]/div[1]/div/div[1]")
+                        # all_data_new = (all_data.text).split("\n")
+            imag_tag = div_of_poster.find_element(By.TAG_NAME, "img").get_attribute("src")
+                        # print(imag_tag)
+
+        except ValueError as e:
+             imag_tag = None
+                    # print(imag_tag)
+                # print(actual_names)
+
     except:
-        actual_director_name = "NULL"
+        actual_director_name = None
 
         list_of_gonears = []
 
-        actual_movie_name = "NULL"
+        actual_movie_name = None
 
-        movie_year = "NULL"
+        movie_year = None
 
         actual_revewis = 0
         # #
-        # actual_url = "NULL"
+        # actual_url = None
 
         all_views_of_people = 0
 
-        actual_description = "NULL"
+        actual_description = None
 
-        actual_runtime = "NULL"
+        actual_runtime = None
 
-        actual_country = "NULL"
+        actual_country = None
 
-        acutal_language = "NULL"
+        acutal_language = None
 
         acutal_budget = 0
 
@@ -206,11 +210,11 @@ def all_poster_Url_finder(url):
 
         rating_out_of_ten = 0
 
-        href_ = "null"
+        href_ = None
 
-        imag_tag = "None"
+        imag_tag = None
 
-        actual_names = "None"
+        actual_names = None
 
     print(
         f"{'*' * 80}"
@@ -270,7 +274,7 @@ def all_poster_Url_finder(url):
 
 def all_link_feeder():
 
-    with open("unique_list_of_url.json" ,"r") as file:
+    with open("all_action_links_to_new.json" ,"r") as file:
         data = file.read()
 
         data = json.loads(data)
@@ -284,7 +288,7 @@ def all_link_feeder():
 all_link_feeder()
 
 def write_in_the_json_():
-    with open("all_new_data_sam+Devika_collected","a") as file:
+    with open("all_new_data_by_only-Devika_collected","a") as file:
         file.write(json.dumps(list_of_all_movies))
 
 
