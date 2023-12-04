@@ -9,6 +9,40 @@ def all_poster_Url_finder(url):
     finder.get(url)
 
     #here i am finding the image tag of the top 250 movies
+<<<<<<< HEAD
+=======
+    try:
+        div_of_poster = finder.find_element(By.XPATH,"/html/body/div[2]/main/div/section[1]/section/div[3]/section/section/div[3]/div[1]/div[1]/div/div[1]")
+        # all_data_new = (all_data.text).split("\n")
+        imag_tag = div_of_poster.find_element(By.TAG_NAME , "img").get_attribute("src")
+        # print(imag_tag)
+
+    except ValueError as e:
+        imag_tag = None
+        # print(imag_tag)
+    try:
+        box_location = finder.find_element(By.XPATH , "/html/body/div[2]/main/div/section[1]/div/section/div/div[1]/section[4]/div[2]/div[2]")
+        actual_name_ho = box_location.find_elements(By.TAG_NAME , "a")
+        names = list()
+
+        for name in actual_name_ho:
+            names.append(name.text)
+        count = 0
+        actual_names = list()
+        for index in range(len(names)):
+            if names[index] == "":
+                actual_names.append(names[index + 1])
+                count += 1
+            if count == 3:
+                break
+
+
+    except ValueError as e:
+        actual_names = None
+        # print(actual_names)
+
+
+>>>>>>> ece325ed2094429031ed25ab64c28a27d6ac94e8
 
     try:
         all_data = finder.find_element(By.XPATH, "/html")
@@ -145,6 +179,7 @@ def all_poster_Url_finder(url):
 
         except ValueError as e:
 
+<<<<<<< HEAD
 
             href_ = None
 
@@ -181,6 +216,9 @@ def all_poster_Url_finder(url):
                     # print(imag_tag)
                 # print(actual_names)
 
+=======
+            href_ = None
+>>>>>>> ece325ed2094429031ed25ab64c28a27d6ac94e8
     except:
         actual_director_name = None
 
@@ -288,7 +326,11 @@ def all_link_feeder():
 all_link_feeder()
 
 def write_in_the_json_():
+<<<<<<< HEAD
     with open("all_new_data_by_only-Devika_collected","a") as file:
+=======
+    with open("all_new_data_sam+Devika_collected.json","a") as file:
+>>>>>>> ece325ed2094429031ed25ab64c28a27d6ac94e8
         file.write(json.dumps(list_of_all_movies))
 
 
