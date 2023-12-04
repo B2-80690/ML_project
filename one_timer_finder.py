@@ -9,7 +9,7 @@ finder = webdriver.Chrome()
 
 
 def url_finder():
-    url_given = f"https://www.imdb.com/search/title/?genres=action&start='{51}'&ref_=adv_nxt"
+    url_given = f"https://www.imdb.com/search/title/?genres=comady&start='{51}'&ref_=adv_nxt"
 
 
 

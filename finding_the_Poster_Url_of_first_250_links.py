@@ -16,7 +16,7 @@ def all_poster_Url_finder(url):
         # print(imag_tag)
 
     except ValueError as e:
-        imag_tag = "None"
+        imag_tag = None
         # print(imag_tag)
     try:
         box_location = finder.find_element(By.XPATH , "/html/body/div[2]/main/div/section[1]/div/section/div/div[1]/section[4]/div[2]/div[2]")
@@ -36,7 +36,7 @@ def all_poster_Url_finder(url):
 
 
     except ValueError as e:
-        actual_names = "None"
+        actual_names = None
         # print(actual_names)
 
 
@@ -51,7 +51,7 @@ def all_poster_Url_finder(url):
             actual_director_name = all_data_new[index_of_director + 1]
             # name of director ends
         except ValueError as e:
-            actual_director_name = "NULL"
+            actual_director_name = None
 
         # here i am finding the gonear list
         try:
@@ -74,7 +74,7 @@ def all_poster_Url_finder(url):
             actual_movie_name = all_data_new[movie_name_index + 1]
             # finding the actual movie name ends here
         except ValueError as e:
-            actual_movie_name = "NULL"
+            actual_movie_name = None
 
         try:
             # here i am finding the reviews in millions
@@ -99,7 +99,7 @@ def all_poster_Url_finder(url):
             # here finding the actual description ends
         except ValueError as e:
 
-            actual_description = "NULL"
+            actual_description = None
 
         try:
             # here i am finding the actual run time
@@ -117,7 +117,7 @@ def all_poster_Url_finder(url):
             # finding the actual language ends here
         except ValueError as e:
 
-            acutal_language = "NULL"
+            acutal_language = None
 
         try:
             # here i am finding the actual country name
@@ -127,7 +127,7 @@ def all_poster_Url_finder(url):
             # here origian of country name is ending
         except ValueError as e:
 
-            actual_country = "NULL"
+            actual_country = None
 
         try:
             # here i am finding the budget for the movie
@@ -176,15 +176,15 @@ def all_poster_Url_finder(url):
 
         except ValueError as e:
 
-            href_ = "null"
+            href_ = None
     except:
-        actual_director_name = "NULL"
+        actual_director_name = None
 
         list_of_gonears = []
 
-        actual_movie_name = "NULL"
+        actual_movie_name = None
 
-        movie_year = "NULL"
+        movie_year = None
 
         actual_revewis = 0
         # #
@@ -192,13 +192,13 @@ def all_poster_Url_finder(url):
 
         all_views_of_people = 0
 
-        actual_description = "NULL"
+        actual_description = None
 
-        actual_runtime = "NULL"
+        actual_runtime = None
 
-        actual_country = "NULL"
+        actual_country = None
 
-        acutal_language = "NULL"
+        acutal_language = None
 
         acutal_budget = 0
 
@@ -206,11 +206,11 @@ def all_poster_Url_finder(url):
 
         rating_out_of_ten = 0
 
-        href_ = "null"
+        href_ = None
 
-        imag_tag = "None"
+        imag_tag = None
 
-        actual_names = "None"
+        actual_names = None
 
     print(
         f"{'*' * 80}"
@@ -284,7 +284,7 @@ def all_link_feeder():
 all_link_feeder()
 
 def write_in_the_json_():
-    with open("all_new_data_sam+Devika_collected","a") as file:
+    with open("all_new_data_sam+Devika_collected.json","a") as file:
         file.write(json.dumps(list_of_all_movies))
 
 
