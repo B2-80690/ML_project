@@ -1,1 +1,1 @@
-# ML_project
+A ContentBased Movie Recommendation System suggests films to users by analyzing movie features like genre, actors, plot keywords, and director. It uses the users past preferences to recommend similar movies, focusing on content characteristics rather than comparing with other users choices.
